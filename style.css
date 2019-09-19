@@ -1,0 +1,139 @@
+body { 
+    margin: 0%;
+    overflow: hidden;
+}
+
+.wrapper {
+    margin: 10px auto;
+    min-width: 800px;
+    border-radius: 25px;
+    box-shadow: 0 0 100px #BFD1DE;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: content;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: content;
+}
+
+textarea {
+    border-radius: 4px;
+    min-width: 700px;
+    height: 150px;
+    border: 1px solid #009999;
+    padding: 5px 10px;
+    resize: vertical;
+    font-family: Montserrat;
+    margin-bottom: 15px;
+}
+
+textarea::placeholder {
+    color: gray;
+    font-family: Montserrat;
+}
+
+textarea:focus {
+    border: 1px solid #ed0200;
+}
+
+.lab {
+    font-family: Montserrat;
+    font-size: 18px;
+    text-transform: uppercase
+}
+
+a {
+    font-size: 14px;
+    width: 150px;
+    text-decoration: none;
+    outline: none;
+    color: black;
+    display: inline-block;
+    position: relative;
+    padding: 15px 30px;
+    border: 1px solid;
+    border-image: linear-gradient(180deg, #33CCCC, #009999, #1D7373, #006363);
+    border-image-slice: 1;
+    margin: 10px 20px;   font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    overflow: hidden;
+    letter-spacing: 2px;
+    transition: .8s cubic-bezier(.165,.84,.44,1);
+    text-align: center;
+  }
+
+  a:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 0;
+    width: 100%;
+    z-index: -1;
+    color: white;
+    background: linear-gradient(180deg, #33CCCC, #009999, #1D7373, #006363);
+    transition: .8s cubic-bezier(.165,.84,.44,1);
+  }
+
+  a:hover {background: rgba(255,255,255,0);}
+  a:active {background: white;}
+  a:hover:before {
+    bottom: 0%;
+    top: auto;
+    height: 100%;
+  }
+  
+  .panel {
+    display: flex;
+    justify-content: center;
+  }
+
+  input {
+    margin: 10px 20px;;
+    width: 30px;
+    border-radius: 4px;
+    padding: 5px 10px;
+    border: 1px solid #009999;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.coefficient {
+    margin-top: 23px;;
+    font-size: 20px;
+    font-family: Montserrat;
+}
+
+input:focus {
+    border: 1px solid #ed0200;
+}
+
+input::placeholder {
+    font-size: 20px;
+    text-align: center;
+    color: gray;
+    font-family: Montserrat;
+}
+
+#error {
+    font-family: Montserrat;
+    font-size: 18px;
+    margin-top: 10px;
+    color: darkred;
+    line-height: 26px;
+}
+
+.headline {
+    margin-top: 10px;
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 24px;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
