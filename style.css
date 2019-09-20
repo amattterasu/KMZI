@@ -14,7 +14,7 @@ body { margin: 0%; }
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex-basis: content;
+    flex-basis: min-content;
 }
 
 .container {
@@ -124,7 +124,7 @@ input::placeholder {
     font-family: Montserrat;
 }
 
-#error {
+#error1, #error2 {
     font-family: Montserrat;
     font-size: 18px;
     margin-top: 10px;
@@ -139,4 +139,8 @@ input::placeholder {
     text-transform: uppercase;
     text-decoration: underline;
     margin-bottom: 30px;
+}
+
+.wrap {
+    display: flex;
 }
