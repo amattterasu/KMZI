@@ -12,33 +12,67 @@
 
 <body>
 
-    <div class="headline">Афинный шифр</div>
-    <div class="wrapper">
-        <div class="container">
-            <div class="lab">
-                <label for="src">Исходный текст:</label>
-            </div>
-            <textarea id="src" placeholder="Исходный текст сюда..."></textarea>
-            <div class="lab">
-                <label for="dist">Зашифрованный текст:</label>
-            </div>
-            <textarea id="dist" placeholder="Зашифрованный текст сюда..."></textarea>
-        </div>
-        <div class="panel">
-            <div class="coefficient">
-                <label for="A">A:</label>
-            </div>
-            <input type="text" id="A" placeholder="A">
-            <div class="coefficient">
-                <label for="B">B:</label>
-            </div>
-            <input type="text" id="B" placeholder="B">
-            <a href="#" id='encrypt'>Зашифровать</a>
-            <a href="#" id='decrypt'>Расшифровать</a>
-        </div>
-        <div id="error"></div>
-    </div>
+    <div class="wraper">
 
+        <div class="item">
+            <div class="headline">Афинный шифр</div>
+            <div class="container">
+                <div class="lab">
+                    <label for="src1">Исходный текст:</label>
+                </div>
+                <textarea id="src1" placeholder="Исходный текст сюда..."></textarea>
+
+                <div class="lab">
+                    <label for="dist1">Зашифрованный текст:</label>
+                </div>
+                <textarea id="dist1" placeholder="Зашифрованный текст сюда..."></textarea>
+            </div>
+
+            <div class="panel">
+                <div class="coefficient">
+                    <label for="A1">A:</label>
+                </div>
+                <input type="text" id="A1" placeholder="A">
+                <div class="coefficient">
+                    <label for="B1">B:</label>
+                </div>
+                <input type="text" id="B1" placeholder="B">
+                <a href="#" id='encrypt1'>Зашифровать</a>
+                <a href="#" id='decrypt1'>Расшифровать</a>
+            </div>
+            <div id="error"></div>
+        </div>
+
+        <div class="item">
+            <div class="headline">Аффинный рекуррентный шифр</div>
+            <div class="container">
+                <div class="lab">
+                    <label for="src1">Исходный текст:</label>
+                </div>
+                <textarea id="src1" placeholder="Исходный текст сюда..."></textarea>
+
+                <div class="lab">
+                    <label for="dist1">Зашифрованный текст:</label>
+                </div>
+                <textarea id="dist1" placeholder="Зашифрованный текст сюда..."></textarea>
+            </div>
+
+            <div class="panel">
+                <div class="coefficient">
+                    <label for="A1">A:</label>
+                </div>
+                <input type="text" id="A1" placeholder="A">
+                <div class="coefficient">
+                    <label for="B1">B:</label>
+                </div>
+                <input type="text" id="B1" placeholder="B">
+                <a href="#" id='encrypt1'>Зашифровать</a>
+                <a href="#" id='decrypt1'>Расшифровать</a>
+            </div>
+            <div id="error"></div>
+        </div>
+    </div>
+    
     <script src="script.js"></script>
 
 </body>

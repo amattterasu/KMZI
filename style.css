@@ -1,11 +1,13 @@
-body { 
-    margin: 0%;
-    overflow: hidden;
+body { margin: 0%; }
+
+.wraper {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 5px auto;
 }
 
-.wrapper {
-    margin: 10px auto;
-    min-width: 800px;
+.item {
+    margin: 25px auto;
     border-radius: 25px;
     box-shadow: 0 0 100px #BFD1DE;
     padding: 25px;
@@ -23,8 +25,8 @@ body {
 }
 
 textarea {
+   width: 400px;
     border-radius: 4px;
-    min-width: 700px;
     height: 150px;
     border: 1px solid #009999;
     padding: 5px 10px;
@@ -92,6 +94,7 @@ a {
   .panel {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
   }
 
   input {
@@ -130,10 +133,10 @@ input::placeholder {
 }
 
 .headline {
-    margin-top: 10px;
     text-align: center;
     font-family: Montserrat;
     font-size: 24px;
     text-transform: uppercase;
     text-decoration: underline;
+    margin-bottom: 30px;
 }

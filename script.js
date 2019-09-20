@@ -1,10 +1,10 @@
 onload = () => {
-    let cipher = new aCipher('src', 'dist');
+    let cipher = new aCipher('src1', 'dist1');
 
-    document.getElementById('encrypt').onclick = () => {
+    document.getElementById('encrypt1').onclick = () => {
         cipher.encrypt();
     }
-    document.getElementById('decrypt').onclick = () => {
+    document.getElementById('decrypt1').onclick = () => {
         cipher.decrypt();
     }
 };
@@ -14,8 +14,8 @@ function aCipher(src, dist) {
     this.dst = document.getElementById(dist);
     this.alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
-    this.aInput = document.getElementById('A');
-    this.bInput = document.getElementById('B');
+    this.aInput = document.getElementById('A1');
+    this.bInput = document.getElementById('B1');
     this.symbols = [];
 
     for (let i = 0; i < this.alphabet.length; i++) {
