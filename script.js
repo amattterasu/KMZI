@@ -20,7 +20,7 @@ onload = () => {
 function aCipher(src, dist) {
     this.src = document.getElementById(src);
     this.dst = document.getElementById(dist);
-    this.alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    this.alphabet = 'abcdefghijklmnopqrstuvwxyz ';
 
     this.aInput = document.getElementById('A');
     this.bInput = document.getElementById('B');
@@ -46,6 +46,7 @@ function aCipher(src, dist) {
         for (let i = 0; i < text.length; i++) {
             let c = text.charAt(i);
             let position = this.alphabet.indexOf(c);
+            
 
             if (position < 0) {
                 encryptedText += c;
@@ -74,7 +75,7 @@ function aCipher(src, dist) {
         let alfaInvers = calcInverse(a, n);
         let text = this.dst.value.toLowerCase();
         let decryptedText = '';
-
+        console.log(alfaInvers);
         for (let i = 0; i < text.length; i++) {
             let c = text.charAt(i);
             let position = this.alphabet.indexOf(c);
@@ -202,7 +203,7 @@ function aRCipher(src, dist) {
             return;
         } else errorDiv.style.display = 'none';
 
-        let n = this.alphabet.length; //26
+        let n = this.alphabet.length; 
         let text = this.dst.value.toLowerCase();
         let decryptedText = '';
         let count = 0;
