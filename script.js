@@ -250,7 +250,7 @@ function aRCipher(src, dist) {
             count++;
         }
 
-        this.dst.value = decryptedText;
+        this.src.value = decryptedText;
     };
 
     this.defence = function (b, a) {
