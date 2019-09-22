@@ -46,7 +46,7 @@ function aCipher(src, dist) {
         for (let i = 0; i < text.length; i++) {
             let c = text.charAt(i);
             let position = this.alphabet.indexOf(c);
-            
+
 
             if (position < 0) {
                 encryptedText += c;
@@ -75,7 +75,6 @@ function aCipher(src, dist) {
         let alfaInvers = calcInverse(a, n);
         let text = this.dst.value.toLowerCase();
         let decryptedText = '';
-        console.log(alfaInvers);
         for (let i = 0; i < text.length; i++) {
             let c = text.charAt(i);
             let position = this.alphabet.indexOf(c);
@@ -141,7 +140,7 @@ function aRCipher(src, dist) {
         let b1 = parseInt(this.b1Input.value);
         let a2 = parseInt(this.a2Input.value);
         let b2 = parseInt(this.b2Input.value);
-;
+        
         if (!this.defence(b1, a1) || !this.defence(b2, a2)) {
             return;
         } else errorDiv.style.display = 'none';
@@ -203,7 +202,7 @@ function aRCipher(src, dist) {
             return;
         } else errorDiv.style.display = 'none';
 
-        let n = this.alphabet.length; 
+        let n = this.alphabet.length;
         let text = this.dst.value.toLowerCase();
         let decryptedText = '';
         let count = 0;
@@ -212,7 +211,7 @@ function aRCipher(src, dist) {
 
             if (count === 0) {
                 a = a1;
-                b = b1; 
+                b = b1;
             }
 
             if (count === 1) {
@@ -251,7 +250,7 @@ function aRCipher(src, dist) {
             count++;
         }
 
-        this.src.value = decryptedText;
+        this.dst.value = decryptedText;
     };
 
     this.defence = function (b, a) {
@@ -280,7 +279,7 @@ function aRCipher(src, dist) {
     }
 }
 
-function calcInverse (a, n) {
+function calcInverse(a, n) {
 
     for (let i = 1; i < n; i++) {
 
@@ -288,8 +287,7 @@ function calcInverse (a, n) {
             return i;
     }
     return 1;
-};
-
+}
 
 function isCoprime(a, b) {
     return b ? isCoprime(b, a % b) : a;
@@ -304,3 +302,9 @@ setInterval(() => {
     let errorDiv = document.getElementById('error2');
     errorDiv.style.display = 'none';
 }, 5000);
+
+
+// for (let i = 0; i < alphabet.length; i++) {
+
+//     console.log(alphabet[i] + ' === ' + i)
+// }
