@@ -35,7 +35,7 @@ function aCipher(src, dist) {
         let a = parseInt(this.aInput.value);
         let b = parseInt(this.bInput.value);
 
-        if (!this.defence(b, a)) {
+        if (!this.defence(27, a)) {
             return;
         } else errorDiv.style.display = 'none';
 
@@ -108,7 +108,7 @@ function aCipher(src, dist) {
             return false;
         }
 
-        if (isCoprime(a, b) == 1)
+        if (isCoprime(a, 27) == 1)
             return true;
         else {
             errorDiv.style.display = 'block';
@@ -198,7 +198,7 @@ function aRCipher(src, dist) {
         let a2 = parseInt(this.a2Input.value);
         let b2 = parseInt(this.b2Input.value);
 
-        if (!this.defence(b1, a1) || !this.defence(b2, a2)) {
+        if (!this.defence(26, a1) || !this.defence(26, a2)) {
             return;
         } else errorDiv.style.display = 'none';
 
@@ -269,7 +269,7 @@ function aRCipher(src, dist) {
             return false;
         }
 
-        if (isCoprime(a, b) == 1)
+        if (isCoprime(a, 26) == 1)
             return true;
         else {
             errorDiv.style.display = 'block';
@@ -289,8 +289,8 @@ function calcInverse(a, n) {
     return 1;
 }
 
-function isCoprime(a, b) {
-    return b ? isCoprime(b, a % b) : a;
+function isCoprime(b, a) {
+    return a ? isCoprime(a, b % a) : b;
 }
 
 setInterval(() => {
