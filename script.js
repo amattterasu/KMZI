@@ -98,7 +98,7 @@ function aCipher(src, dist) {
 
         if (b != parseInt(b) || a != parseInt(a)) {
             errorDiv.style.display = 'block';
-            errorDiv.innerHTML = 'A и K должны быть целыми числами!';
+            errorDiv.innerHTML = 'A и B должны быть целыми числами!';
             return false;
         }
 
@@ -259,7 +259,7 @@ function aRCipher(src, dist) {
 
         if (b != parseInt(b) || a != parseInt(a)) {
             errorDiv.style.display = 'block';
-            errorDiv.innerHTML = 'A и K должны быть целыми числами!';
+            errorDiv.innerHTML = 'A и B должны быть целыми числами!';
             return false;
         }
 
