@@ -20,7 +20,7 @@ onload = () => {
 function aCipher(src, dist) {
     this.src = document.getElementById(src);
     this.dst = document.getElementById(dist);
-    this.alphabet = 'abcdefghijklmnopqrstuvwxyz ';
+    this.alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
     this.aInput = document.getElementById('A');
     this.bInput = document.getElementById('B');
@@ -35,7 +35,7 @@ function aCipher(src, dist) {
         let a = parseInt(this.aInput.value);
         let b = parseInt(this.bInput.value);
 
-        if (!this.defence(27, a)) {
+        if (!this.defence(26, a)) {
             return;
         } else errorDiv.style.display = 'none';
 
@@ -46,7 +46,6 @@ function aCipher(src, dist) {
         for (let i = 0; i < text.length; i++) {
             let c = text.charAt(i);
             let position = this.alphabet.indexOf(c);
-
 
             if (position < 0) {
                 encryptedText += c;
@@ -67,7 +66,7 @@ function aCipher(src, dist) {
         let a = parseInt(this.aInput.value);
         let b = parseInt(this.bInput.value);
 
-        if (!this.defence(b, a)) {
+        if (!this.defence(26, a)) {
             return;
         } else errorDiv.style.display = 'none';
 
@@ -108,7 +107,7 @@ function aCipher(src, dist) {
             return false;
         }
 
-        if (isCoprime(a, 27) == 1)
+        if (isCoprime(a, 26) == 1)
             return true;
         else {
             errorDiv.style.display = 'block';
@@ -231,7 +230,6 @@ function aRCipher(src, dist) {
             let alfaInvers = calcInverse(a, n);
             let c = text.charAt(i);
             let position = this.alphabet.indexOf(c);
-
 
             if (position < 0) {
                 decryptedText += c;
