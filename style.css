@@ -12,6 +12,12 @@ body { margin: 0; }
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 25px auto;
+    border-radius: 25px;
+    box-shadow: 0 0 15px #BFD1DE;
+    padding: 25px;
+    display: flex;
+    width: 300px;
 }
 
 .inputMatrix {
