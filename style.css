@@ -6,7 +6,19 @@
     font-style: normal;
 }
 
-body { margin: 0; }
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;    
+}
+
+.wraper {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    margin: 10px 10px;
+    height: 800px;
+}
 
 .container {
     display: flex;
@@ -16,8 +28,7 @@ body { margin: 0; }
     border-radius: 25px;
     box-shadow: 0 0 15px #BFD1DE;
     padding: 25px;
-    display: flex;
-    width: 300px;
+    width: 400px;
 }
 
 .inputMatrix {
@@ -29,20 +40,24 @@ body { margin: 0; }
 
 .inputMatrix input {
     border: 1px solid #009999;
-    height: 50px;
-    width: 50px;
+    height: 75px;
+    width: 75px;
     margin: 10px;
-    font-size: 20px;
+    font-size: 35px;
     text-align: center;
 }
 
+.inputMatrix input::selection {
+    color:  red;
+}
+
 input:focus {
-    border: rgb(0, 255, 0) solid 2px;
+    border: 2px solid rgb(255, 217, 0);
 }
 
 a {
-    font-size: 14px;
-    width: 150px;
+    font-size: 20px;
+    width: 200px;
     text-decoration: none;
     outline: none;
     color: black;
@@ -52,15 +67,15 @@ a {
     border: 1px solid;
     border-image: linear-gradient(180deg, #33CCCC, #009999, #1D7373, #006363);
     border-image-slice: 1;
-    margin: 10px 20px;   
+    margin: 10px 20px;
     text-transform: uppercase;
     overflow: hidden;
     letter-spacing: 2px;
-    transition: .8s cubic-bezier(.165,.84,.44,1);
+    transition: .8s cubic-bezier(.165, .84, .44, 1);
     text-align: center;
-  }
+}
 
-  a:before {
+a:before {
     content: "";
     position: absolute;
     left: 0;
@@ -70,13 +85,32 @@ a {
     z-index: -1;
     color: white;
     background: linear-gradient(180deg, #33CCCC, #009999, #1D7373, #006363);
-    transition: .8s cubic-bezier(.165,.84,.44,1);
-  }
+    transition: .8s cubic-bezier(.165, .84, .44, 1);
+}
 
-  a:hover { background: rgba(255,255,255,0); }
-  a:active { background: white; }
-  a:hover:before {
+a:hover {
+    background: rgba(255, 255, 255, 0);
+}
+
+a:active {
+    background: white;
+}
+
+a:hover:before {
     bottom: 0%;
     top: auto;
     height: 100%;
-  }
+}
+
+.info {
+    font-size: 18px;
+}
+
+.titleMatrix {
+    font-size: 40px;
+    margin-top: 0;
+}
+
+.hide {
+    display: none !important;
+}
