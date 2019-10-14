@@ -28,7 +28,7 @@ html {
     border-radius: 25px;
     box-shadow: 0 0 15px #BFD1DE;
     padding: 25px;
-    width: 400px;
+    min-width: 450px;
 }
 
 .inputMatrix {
@@ -114,3 +114,23 @@ a:hover:before {
 .hide {
     display: none !important;
 }
+
+textarea {
+    width: 420px;
+    border-radius: 4px;
+    height: 220px;
+    border: 1px solid #009999;
+    padding: 5px 10px;
+    font-family: Montserrat;
+    margin-bottom: 15px;
+ }
+
+textarea::placeholder {
+    color: gray;
+    font-family: Montserrat;
+}
+
+textarea:focus {
+    border: 1px solid #ed0200;
+}
+ 
