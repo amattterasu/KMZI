@@ -17,7 +17,7 @@ html {
     justify-items: center;
     align-items: center;
     margin: 10px 10px;
-    height: 800px;
+    height: 920px;
 }
 
 .container {
@@ -106,9 +106,19 @@ a:hover:before {
     font-size: 18px;
 }
 
+.titleMode {
+    text-align: center;
+    margin: 0;
+    text-transform: uppercase;
+}
+
 .titleMatrix {
     font-size: 40px;
     margin-top: 0;
+}
+
+.tabsDiv {
+    margin-top: 10px;
 }
 
 .hide {
@@ -118,7 +128,7 @@ a:hover:before {
 textarea {
     width: 420px;
     border-radius: 4px;
-    height: 220px;
+    height: 180px;
     border: 1px solid #009999;
     padding: 5px 10px;
     font-family: Montserrat;
@@ -133,4 +143,24 @@ textarea::placeholder {
 textarea:focus {
     border: 1px solid #ed0200;
 }
- 
+
+.mode {
+    border: none;
+}
+
+.mode:hover {
+    background: white;
+}
+
+.mode::before {
+    background: white;
+
+}
+
+.target {
+    border: 3px solid rgb(255, 0, 0);
+}
+
+.firstTwo {
+    color: red;
+}

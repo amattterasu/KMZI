@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="src/style.css">
+    <link rel="stylesheet" media="screen" href="src/alert.css">
     <link href="https://fonts.googleapis.com/css?family=Chakra+Petch&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <title>KMZI</title>
@@ -34,19 +35,34 @@
         </div>
 
         <div class="container hide">
+            <h1 class="titleMode">select mode</h1>
+            <div class="tabsDiv">
+                <a href="#" class="target mode" id='encryptAction'>encrypt</a>
+                <a href="#" class="mode" id='decryptAction'>decrypt</a>
+            </div>
 
-            <h1 class="titleCipher">Enter Plain Text</h1>
+            <h1 class="titlePlain">Enter Plain Text</h1>
             <textarea cols="40" rows="17" id="txt1"></textarea>
-            <a href="#" id='actionBtn'>encrypt</a>
+
+            <a href="#" id='actionBtn'> <span class="firstTwo">en</span>crypt</a>
+
             <h1 class="titleCipher">Cipher Text</h1>
-            <textarea cols="30" rows="17" id="txt2" ></textarea>
+            <textarea cols="30" rows="17" id="txt2"></textarea>
 
         </div>
 
+        <div class="hide" id="alertContainer">
+            <div class="position-absolute" id="alert">
+                <span>
+                    <i id="alertIcon"></i>
+                </span>
+                <span id="alertMessage"></span>
+            </div>
+        </div>
 
     </div>
 
-    <script src="script.js"></script>
+    <script src="src/script.js"></script>
 
 </body>
 
