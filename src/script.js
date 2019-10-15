@@ -2,8 +2,8 @@ let inputMatrix = document.getElementsByClassName("inputMatrix")[0].childNodes;
 let btnNext = document.getElementById("btnNext");
 const containers = document.getElementsByClassName('container');
 let tabsDiv = document.getElementsByClassName("tabsDiv")[0].childNodes;
-let titlePlain = document.getElementsByClassName('titlePlain');
-let titleCipher = document.getElementsByClassName('titleCipher');
+let titlePlain = document.getElementById('titlePlain');
+let titleCipher = document.getElementById('titleCipher');
 const alphaTxt = "abcdefghijklmnopqrstuvwxyz .,";
 let key = [
     [],
@@ -38,6 +38,7 @@ function checkRelativelyPrime() {
 function gcd(x, y) {
     x = Math.abs(x);
     y = Math.abs(y);
+
     while (y) {
         let t = y;
         y = x % y;
@@ -48,8 +49,10 @@ function gcd(x, y) {
 
 function multiplyMatrix(a, b) {
     let result = [];
+
     for (let i = 0; i < a.length; i++) {
         result[i] = 0;
+        
         for (let j = 0; j < a[i].length; j++) {
             result[i] += b[j] * a[i][j];
         }
@@ -58,6 +61,7 @@ function multiplyMatrix(a, b) {
 }
 
 function getRidOfNeg(x, n) {
+
     while (x < 0) {
         x += n;
     }
@@ -67,14 +71,13 @@ function getRidOfNeg(x, n) {
 function modularInverse(m, n) {
     let x = m;
     let y = n;
-
     let divs = [];
     let adds = [];
-
     let result;
 
     if (y > x) {
         let i = 1;
+
         while (x != 0) {
             divs[i] = Math.floor(y / x);
             let temp = x;
@@ -86,6 +89,7 @@ function modularInverse(m, n) {
         let len = divs.length;
         adds[len - 1] = 0;
         adds[len - 2] = 1;
+
         for (let index = len - 2; index > 0; index--) {
             adds[index - 1] = (divs[index] * adds[index]) + adds[index + 1];
         }
@@ -95,7 +99,6 @@ function modularInverse(m, n) {
         } else {
             result = n - adds[0];
         }
-
     }
 
     return result;
@@ -107,9 +110,9 @@ function inverseMatrix(matrix) {
         [0, 0, 0],
         [0, 0, 0]
     ];
+
     for (let i = 0; i < matrix.length; i++) {
         for (let j = 0; j < matrix[i].length; j++) {
-
             minorMatrix[i][j] = (matrix[(i + 1) % 3][(j + 1) % 3] * matrix[(i + 2) % 3][(j + 2) % 3]) - (matrix[(i + 1) % 3][(j + 2) % 3] * matrix[(i + 2) % 3][(j + 1) % 3]);
         }
     }
@@ -160,6 +163,7 @@ actionBtn.addEventListener("click", () => {
 
 function encrypt(plain) {
     let cipher = "";
+
     if (alphaTxt.indexOf(" ") == -1) {
         plain = plain.split(" ").join("");
     }
@@ -167,22 +171,25 @@ function encrypt(plain) {
     for (let index = 0; index < plain.length; index += 3) {
         let x = alphaTxt.indexOf(plain[index]);
         let y, z;
-
+        
         if (index + 1 == plain.length) {
-            y = 0;
-            z = 1;
+            y = 26;
+            z = 26;
         } else {
             y = alphaTxt.indexOf(plain[index + 1]);
+
             if (index + 2 == plain.length) {
-                z = 0;
+                z = 26;
             } else {
                 z = alphaTxt.indexOf(plain[index + 2]);
             }
         }
-
+        console.log(x, y, z);
         let res = multiplyMatrix(key, [x, y, z]);
+        console.log(res);
 
         for (let i = 0; i < res.length; i++) {
+
             if (res[i] < 0) {
                 res[i] = getRidOfNeg(res[i], n);
             }
@@ -196,6 +203,7 @@ function encrypt(plain) {
 function decrypt(cipher) {
     let plain = "";
     let m = det;
+
     if (det < 0) {
         m = getRidOfNeg(det, n);
     }

@@ -149,18 +149,18 @@ textarea:focus {
 }
 
 .mode:hover {
-    background: white;
+    background: #BFD1DE;
 }
 
 .mode::before {
-    background: white;
-
+    background: whitesmoke;
 }
 
 .target {
-    border: 3px solid rgb(255, 0, 0);
+    border: 3px solid orangered;
 }
 
 .firstTwo {
-    color: red;
+    color: orangered;
+    
 }
