@@ -11,7 +11,6 @@ let key = [
     [],
     []
 ];
-let det;
 const n = 29;
 
 btnNext.addEventListener("click", () => {
@@ -125,6 +124,7 @@ function decrypt(cipher) {
 
     if (det < 0) {
         m = getRidOfNeg(det, n);
+        console.log('check here!!!', m);
     }
     m = m % n;
 
@@ -132,29 +132,28 @@ function decrypt(cipher) {
     console.log("m:  " + m);
 
     let modularInv = modularInverse(m, n);
-    let matrixInv = inverseMatrix(key);
-    console.log(modularInv);
-    console.log(matrixInv);
+    let matrixInv = inverseMatrix(key); //обратная матрица без умножения по модулю
+    console.log('modularInv', modularInv);
+    console.log('matrixInv', matrixInv);
+
+    let keyMinusPervoy;
 
     for (let index = 0; index < cipher.length; index += 3) {
         let x = alphaTxt.indexOf(cipher[index]);
         let y = alphaTxt.indexOf(cipher[index + 1]);
         let z = alphaTxt.indexOf(cipher[index + 2]);
 
-        console.log("dec: " + [x, y, z]);
-        let res = multiplyMatrix(matrixInv, [x, y, z]);
+        console.log("3 Symbols:", [x, y, z]);
+        
+        let res = multiplyMatrixMod(matrixInv, n);
+        keyMinusPervoy =  multplyMatrixAndNum(modularInv, res);
+        console.log('kvminuspervoy',  keyMinusPervoy);
         console.log("matinv: " + res);
 
-        for (let i = 0; i < res.length; i++) {
-            res[i] *= modularInv;
-            console.log("res[" + i + "]:  " + res[i]);
-
-            if (res[i] < 0) {
-                res[i] = getRidOfNeg(res[i], n);
-            }
-
-            let j = res[i] % n;
-            plain += alphaTxt[j];
+        let j = multiplyMatrix(keyMinusPervoy, [x, y, z]);
+        for (let i = 0; i < j.length; i++) {
+           let a = j[i] % n;
+            plain += alphaTxt[a];
         }
     }
     return plain;

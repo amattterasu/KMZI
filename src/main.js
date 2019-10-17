@@ -24,6 +24,7 @@ rechill.addEventListener("click", () => {
     info.classList.add('hide');
 });
 
+//алгоритм Евклида
 function gcd(x, y) {
     x = Math.abs(x);
     y = Math.abs(y);
@@ -36,12 +37,13 @@ function gcd(x, y) {
     return x;
 }
 
+//умножение матриц 3 на 1
 function multiplyMatrix(a, b) {
     let result = [];
 
     for (let i = 0; i < a.length; i++) {
         result[i] = 0;
-        
+
         for (let j = 0; j < a[i].length; j++) {
             result[i] += b[j] * a[i][j];
         }
@@ -49,6 +51,69 @@ function multiplyMatrix(a, b) {
     return result;
 }
 
+//умножение матриц 3x3
+function multiplyMatrix3x3(A, B) {
+    let rowsA = A.length, colsA = A[0].length,
+        rowsB = B.length, colsB = B[0].length,
+        C = [];
+
+    if (colsA != rowsB) return false;
+
+    for (let i = 0; i < rowsA; i++) C[i] = [];
+
+    for (let k = 0; k < colsB; k++) {
+        for (let i = 0; i < rowsA; i++) {
+            let temp = 0;
+            for (let j = 0; j < rowsB; j++) temp += A[i][j] * B[j][k];
+            C[i][k] = temp;
+        }
+    }
+    return C;
+}
+
+//расширенный алгориим Евклида
+function gcdT(x, y, s1 = 1, s2 = 0, t1 = 0, t2 = 1) {
+    let q = Math.floor(x / y),
+        s1copy = s1,
+        t1copy = t1;
+    return (x % y === 0) ? { gcd: y, s: s2, t: t2 } : gcd(y, x % y, s1 = s2, s2 = s1copy - q * s2, t1 = t2, t2 = t1copy - q * t2);
+}
+//gcd(161, 28); // returns { gcd: 7, s: -1, t: 6 }
+
+// умножение матрицы на число
+function multplyMatrixAndNum(num, A) {
+    let n = A.length;
+    let B = [];
+
+    for (let i = 0; i < n; i++) {
+        B[i] = [];
+        for (let j = 0; j < n; j++) B[i][j] = num * A[i][j];
+    }
+
+    return B;
+}
+
+//деление по модулю элементов матрицы
+function multiplyMatrixMod(A, num) {
+    let n = A.length;
+    let B = [];
+
+    for (let i = 0; i < n; i++) {
+        B[i] = [];
+        for (let j = 0; j < n; j++) {
+            if (A[i][j] < 0) {
+                A[i][j] = getRidOfNeg(A[i][j], num)
+                B[i][j] = A[i][j]
+                continue;
+            }
+            B[i][j] = A[i][j] % num;
+        }
+    }
+
+    return B;
+}
+
+//-30 + 29 = -1 + 29 = 28
 function getRidOfNeg(x, n) {
 
     while (x < 0) {
@@ -57,6 +122,7 @@ function getRidOfNeg(x, n) {
     return x;
 }
 
+//Обратный элемент в кольце по модулю???
 function modularInverse(m, n) {
     let x = m;
     let y = n;
@@ -93,6 +159,7 @@ function modularInverse(m, n) {
     return result;
 }
 
+//обратная матрица
 function inverseMatrix(matrix) {
     let minorMatrix = [
         [0, 0, 0],
@@ -119,6 +186,7 @@ function inverseMatrix(matrix) {
     return adjointMatrix;
 }
 
+//детерминант
 function getDeterminant(matrix) {
     let x = matrix[0][0] * ((matrix[1][1] * matrix[2][2]) - (matrix[2][1] * matrix[1][2]));
     let y = matrix[0][1] * ((matrix[1][0] * matrix[2][2]) - (matrix[2][0] * matrix[1][2]));

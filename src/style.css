@@ -93,7 +93,7 @@ a {
     border: 1px solid;
     border-image: linear-gradient(180deg, #33CCCC, #009999, #1D7373, #006363);
     border-image-slice: 1;
-    margin: 5px 20px;
+    margin: 10px 20px;
     text-transform: uppercase;
     overflow: hidden;
     letter-spacing: 2px;
@@ -130,6 +130,7 @@ a:hover:before {
 
 .info {
     font-size: 18px;
+    margin: 5px 0;
 }
 
 .titleMode {
@@ -140,7 +141,7 @@ a:hover:before {
 
 .titleMatrix {
     font-size: 30px;
-    margin-top: 10px;
+    margin-top: 0;
     margin-bottom: 5px;
 }
 
