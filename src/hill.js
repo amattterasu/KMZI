@@ -147,7 +147,6 @@ function decrypt(cipher) {
         
         let res = multiplyMatrixMod(matrixInv, n);
         keyMinusPervoy =  multplyMatrixAndNum(modularInv, res);
-        console.log('kvminuspervoy',  keyMinusPervoy);
         console.log("matinv: " + res);
 
         let j = multiplyMatrix(keyMinusPervoy, [x, y, z]);

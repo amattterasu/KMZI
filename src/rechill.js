@@ -117,19 +117,25 @@ function encryptRec(plain) {
         if (index === 0) {
             result = multiplyMatrix(key1, [x, y, z]);
             //console.log('index:', index, result);
+            console.log('1_key1', key1);
         } else if (index === 3) {
             result = multiplyMatrix(key2, [x, y, z]);
             //console.log('index:', index, result);
+            console.log('1_key2', key2);
         } else if (index > 3) {
 
             let c = multiplyMatrix3x3(key2, key1);
-            console.log(c);
+
+            console.log('c', c);
+
             result = multiplyMatrix(c, [x, y, z]);
 
             console.log('index:', index, result);
 
+            let res = multiplyMatrixMod(c, n);
+
             key1 = key2.slice();
-            key2 = c.slice();
+            key2 = res.slice();
         }
 
         for (let i = 0; i < result.length; i++) {
@@ -201,17 +207,20 @@ function decryptRec(cipher) {
         } else if (index > 3) {
             let c = multiplyMatrix3x3(key1, key2);
 
-            console.log(c);
+            console.log('c', c);
 
             j = multiplyMatrix(c, [x, y, z]);
 
             console.log('index:', index, j);
 
+            let res = multiplyMatrixMod(c, n);
+            
             key1 = key2.slice();
-            key2 = c.slice();
+            key2 = res.slice();
         }
 
         for (let i = 0; i < j.length; i++) {
+            
             let a = j[i] % n;
             plain += alphaTxt[a];
         }
