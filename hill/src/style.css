@@ -1,0 +1,207 @@
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-family: 'Chakra Petch';
+    font-style: normal;
+}
+
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;    
+}
+
+.panel {
+    top: 0px;
+    display: flex;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 10px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 25px auto;
+    border-radius: 25px;
+    box-shadow: 0 0 15px #BFD1DE;
+    padding: 15px;
+    min-width: 450px;
+}
+
+.inputMatrix {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin: 0 auto;
+}
+
+.inputMatrix input {
+    border: 1px solid #009999;
+    height: 60px;
+    width: 60px;
+    margin: 10px;
+    font-size: 35px;
+    text-align: center;
+}
+
+.inputMatrix input::selection {
+    color:  red;
+}
+
+.inputMatrixRec {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    margin: 0 auto;
+}
+
+.inputMatrixRec input {
+    border: 1px solid #009999;
+    height: 60px;
+    width: 60px;
+    margin: 10px;
+    font-size: 35px;
+    text-align: center;
+}
+
+.inputMatrixRec input::selection {
+    color:  red;
+}
+
+input:focus {
+    border: 2px solid rgb(255, 217, 0);
+}
+
+a {
+    font-size: 20px;
+    width: 180px;
+    text-decoration: none;
+    outline: none;
+    color: black;
+    display: inline-block;
+    position: relative;
+    padding: 8px 10px;
+    border: 1px solid;
+    border-image: linear-gradient(180deg, #33CCCC, #009999, #1D7373, #006363);
+    border-image-slice: 1;
+    margin: 10px 20px;
+    text-transform: uppercase;
+    overflow: hidden;
+    letter-spacing: 2px;
+    transition: .8s cubic-bezier(.165, .84, .44, 1);
+    text-align: center;
+}
+
+a:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 0;
+    width: 100%;
+    z-index: -1;
+    color: white;
+    background: linear-gradient(180deg, #33CCCC, #009999, #1D7373, #006363);
+    transition: .8s cubic-bezier(.165, .84, .44, 1);
+}
+
+a:hover {
+    background: rgba(255, 255, 255, 0);
+}
+
+a:active {
+    background: white;
+}
+
+a:hover:before {
+    bottom: 0%;
+    top: auto;
+    height: 100%;
+}
+
+.info {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.titleMode {
+    text-align: center;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.titleMatrix {
+    font-size: 30px;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.tabsDiv {
+    margin-top: 10px;
+}
+
+.hide {
+    display: none !important;
+}
+
+textarea {
+    width: 420px;
+    border-radius: 4px;
+    height: 180px;
+    border: 1px solid #009999;
+    padding: 5px 10px;
+    font-family: Montserrat;
+    margin-bottom: 15px;
+ }
+
+textarea::placeholder {
+    color: gray;
+    font-family: Montserrat;
+}
+
+textarea:focus {
+    border: 1px solid #ed0200;
+}
+
+.mode {
+    border: none;
+}
+
+.mode:hover {
+    background: #BFD1DE;
+}
+
+.mode::before {
+    background: whitesmoke;
+}
+
+.target {
+    border: 3px solid orangered;
+}
+
+.firstTwo {
+    color: orangered;
+}
+
+.slectCipher:hover {
+    background: #BFD1DE;
+}
+
+.selectCipher::before {
+    background: whitesmoke;
+}
+
+.selectCipher {
+    font-size: 18px;
+    padding: 5px 5px;
+    width: 150px;
+}
