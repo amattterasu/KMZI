@@ -1,6 +1,7 @@
 let tabsDiv = document.getElementsByClassName("tabsDiv")[0].childNodes;
 let titlePlain = document.getElementById('titlePlain');
 let titleCipher = document.getElementById('titleCipher');
+let titleKey = document.getElementById('titleKey');
 
 let tabsDivRec = document.getElementsByClassName("tabsDivRec")[0].childNodes;
 let titlePlainRec = document.getElementById('titlePlainRec');
@@ -26,6 +27,7 @@ tabsDivRec[1].addEventListener("click", () => {
   titlePlainRec.innerText = "Enter Plain Text";
   titleCipherRec.innerText = "Cipher Text";
   actionBtnRec.innerHTML = "encrypt";
+  titleKey.innerHTML = 'Enter 1 symbol of key';
   tabsDivRec[1].classList.add('target');
   tabsDivRec[3].classList.remove('target');
 });
@@ -34,6 +36,7 @@ tabsDivRec[3].addEventListener("click", () => {
   titlePlainRec.innerText = "Enter Cipher Text";
   titleCipherRec.innerText = "Plain Text";
   actionBtnRec.innerHTML = "decrypt";
+  titleKey.innerHTML = 'Enter key';
   tabsDivRec[3].classList.add('target');
   tabsDivRec[1].classList.remove('target');
 });

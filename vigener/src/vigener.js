@@ -1,54 +1,101 @@
-function between(x, min, max) { return x >= min && x <= max; }
+const lowerReference = 'abcdefghijklmnopqrstuvwxyz';
+const upperReference = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-function decrypt(key, cipher) {
+/**
+ * @method isalpha
+ * @param {String} str string to test
+ * @return {Boolean} returns true if is a letter
+ */
+function isalpha(str) {
+  return (/^[a-zA-Z]+$/).test(str);
+}
 
-  let msg = [];
-  let output = '';
-  for (char of cipher) {
-    let code = char.charCodeAt(0)
-    if (between(code, 65, 90)) { msg.push([code - 65, 0]) }
-    else if (between(code, 97, 122)) { msg.push([code - 97, 1]) }
-    else { msg.push(char) }
+/**
+ * Applies Vigenere encryption to a phrase given a keyWord and a
+ * numeric flag passed as a the third argument, when flag is
+ * positive it ciphers, when negative it deciphers
+ * @method process
+ * @param {String} keyWord string to process
+ * @param {String} phrase secret key
+ * @param {Number} flag decides action
+ * @return {String} result process output
+ */
+
+function process(keyWord, phrase, flag = 1) {
+  // check if arguments are correct
+  if (typeof keyWord !== 'string' || typeof phrase !== 'string') {
+    throw new Error('vignere: key word and phrase must be strings');
   }
 
-  key = key.toLowerCase().split('').map(function (c) {
-    return c.charCodeAt(0) - 65
-  })
+  // throw error if keyWord is not valid
+  if (!isalpha(keyWord)) {
+    throw new Error('vignere: key keyWord can only contain letters');
+  }
 
-  for (var i = 0; i < msg.length; i++) {
-    if (typeof msg[i] === 'string') { output += msg[i] }
-    else {
-      let value = (key[i % key.length] - msg[i][0]) % 26
-      output += String.fromCharCode(26 - value + 65 + msg[i][1] * 32)
+  // pass key keyWord all to lower case
+  keyWord = keyWord.toLowerCase();
+
+  const phraselen = phrase.length;
+  const wlen = keyWord.length;
+
+  let i = 0,
+    wi = 0,
+    symbol,
+    pos,
+    result = '';
+
+  for (; i < phraselen; i++) {
+    pos = phrase[i];
+    if (isalpha(pos)) {
+      if (flag > 0) {
+        console.log(`Txt pos ${i}:`, lowerReference.indexOf(pos.toLowerCase()));
+        console.log(`   Key pos ${i}:`, lowerReference.indexOf(keyWord[wi]));
+        symbol = lowerReference.indexOf(pos.toLowerCase()) + lowerReference.indexOf(keyWord[wi]);
+        console.log(`      Res pos ${i}:`, symbol)
+      } else {
+        symbol = lowerReference.indexOf(pos.toLowerCase()) - lowerReference.indexOf(keyWord[wi]);
+        symbol = symbol < 0 ? 26 + symbol : symbol;
+      }
+      symbol %= 26;
+      // take cipher from lower or upper reference
+      result = lowerReference.indexOf(pos) === -1 ? result + upperReference[symbol] : result + lowerReference[symbol];
+      // reset keyword index when it exceeds keyword phrase length
+      wi = wi + 1 === wlen ? 0 : wi + 1;
+    } else {
+      result += pos;
     }
   }
 
-  return output
-
+  return result;
 }
 
-function encrypt(key, plain) {
-
-  let msg = [];
-  let output = '';
-  for (char of plain) {
-    let code = char.charCodeAt(0)
-    if (between(code, 65, 90)) { msg.push([code - 65, 0]) }
-    else if (between(code, 97, 122)) { msg.push([code - 97, 1]) }
-    else { msg.push(char) }
-  }
-
-  key = key.toLowerCase().split('').map(function (c) {
-    return c.charCodeAt(0) - 65
-  })
-
-  for (var i = 0; i < msg.length; i++) {
-    if (typeof msg[i] === 'string') { output += msg[i] }
-    else {
-      let value = (msg[i][0] + key[i % key.length]) % 26
-      output += String.fromCharCode(value + 65 + msg[i][1] * 32)
-    }
-  }
-
-  return output
+function encrypt(keyWord, phrase) {
+  return process(keyWord, phrase);
 }
+
+function decrypt(keyWord, phrase) {
+  return process(keyWord, phrase, -1);
+}
+
+actionBtn.addEventListener("click", () => {
+  if (actionBtn.innerHTML === "encrypt") {
+    txtOut1.value = encrypt(key1.value, txtInput1.value);
+    console.log(txtInput1.value);
+  } else {
+    txtOut1.value = decrypt(key1.value, txtInput1.value);
+  }
+});
+
+actionBtnRec.addEventListener("click", () => {
+  let selfText = txtInput2.value.slice(0, -1);
+  let selfKey = key2.value + selfText.split(' ').join('');
+  console.log(selfKey);
+  
+  if (actionBtnRec.innerHTML === "encrypt") {
+    txtOut2.value = encrypt(selfKey, txtInput2.value);
+    key2.value += selfText.split(' ').join('');
+  } else {
+    txtOut2.value = decrypt(key2.value, txtInput2.value);
+  }
+});
+

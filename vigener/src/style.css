@@ -31,8 +31,23 @@ html {
     min-width: 450px;
 }
 
+input {
+    margin: 10px 20px;;
+    border-radius: 4px;
+    padding: 5px 10px;
+    border: 1px solid #009999;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+input::placeholder {
+    color: gray;
+    opacity: 0.2;
+    font-family: 'Chakra Petch';
+}
+
 input:focus {
-    border: 2px solid rgb(255, 217, 0);
+    border: 2px solid #ed0200;
 }
 
 a {
@@ -82,7 +97,6 @@ a:hover:before {
     height: 100%;
 }
 
-
 .titleMode {
     text-align: center;
     margin: 0;
@@ -91,12 +105,18 @@ a:hover:before {
 
 .tabsDiv {
     margin-top: 10px;
+    border-radius: 10px;
+} 
+
+.key {
+    font-size: 20px;
+    margin-top: 5px;
 }
 
 textarea {
     width: 420px;
     border-radius: 4px;
-    height: 180px;
+    height: 140px;
     border: 1px solid #009999;
     padding: 5px 10px;
     font-family: Montserrat;
@@ -109,7 +129,7 @@ textarea::placeholder {
 }
 
 textarea:focus {
-    border: 1px solid #ed0200;
+    border: 2px solid #ed0200;
 }
 
 .mode {
