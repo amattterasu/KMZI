@@ -48,10 +48,10 @@ function process(keyWord, phrase, flag = 1) {
     pos = phrase[i];
     if (isalpha(pos)) {
       if (flag > 0) {
-        console.log(`Txt pos ${i}:`, lowerReference.indexOf(pos.toLowerCase()));
-        console.log(`   Key pos ${i}:`, lowerReference.indexOf(keyWord[wi]));
+        //console.log(`Txt pos ${i}:`, lowerReference.indexOf(pos.toLowerCase()));
+        //console.log(`   Key pos ${i}:`, lowerReference.indexOf(keyWord[wi]));
         symbol = lowerReference.indexOf(pos.toLowerCase()) + lowerReference.indexOf(keyWord[wi]);
-        console.log(`      Res pos ${i}:`, symbol)
+        //console.log(`      Res pos ${i}:`, symbol)
       } else {
         symbol = lowerReference.indexOf(pos.toLowerCase()) - lowerReference.indexOf(keyWord[wi]);
         symbol = symbol < 0 ? 26 + symbol : symbol;
@@ -79,18 +79,16 @@ function decrypt(keyWord, phrase) {
 
 actionBtn.addEventListener("click", () => {
   if (actionBtn.innerHTML === "encrypt") {
-    txtOut1.value = encrypt(key1.value, txtInput1.value);
-    console.log(txtInput1.value);
+    txtOut1.value = encrypt(key1.value.split(' ').join(''), txtInput1.value);
   } else {
-    txtOut1.value = decrypt(key1.value, txtInput1.value);
+    txtOut1.value = decrypt(key1.value.split(' ').join(''), txtInput1.value);
   }
 });
 
 actionBtnRec.addEventListener("click", () => {
   let selfText = txtInput2.value.slice(0, -1);
   let selfKey = key2.value + selfText.split(' ').join('');
-  console.log(selfKey);
-  
+
   if (actionBtnRec.innerHTML === "encrypt") {
     txtOut2.value = encrypt(selfKey, txtInput2.value);
     key2.value += selfText.split(' ').join('');
@@ -98,4 +96,3 @@ actionBtnRec.addEventListener("click", () => {
     txtOut2.value = decrypt(key2.value, txtInput2.value);
   }
 });
-
