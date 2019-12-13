@@ -57,13 +57,12 @@ function getKeyLen() {
   //Получаю индексы, передавая возможные ключи для сдвига, max length of key = 100
   for (let i = 1; i < 100; i++) {
     temp = getIndexMatch(textClean, getShift(textClean, i));
-
-    if (temp > 0.0667) {
+    if (temp > 0.0665) {
       arr[j] = i;
       j++;
     }
-
   }
+  //console.log(arr);
   return arr[1] - arr[0];
 }
 
@@ -111,6 +110,7 @@ function getCountNumOfLetters() {
       
     }
     storeGlobal[i] = storeSub.slice();
+    //console.log(storeGlobal[i]);
   }
 
   return storeGlobal;
@@ -126,7 +126,7 @@ function getKey() {
   let storeGlobal = getCountNumOfLetters();
   let tmp = [];
   let key = '';
-  //Поиск индексов, которым присвоен максимальный элемент
+  //Поиск индексов, которым присвоены максимальные элементы
   for(let i = 0; i < storeGlobal.length; i++) {
     tmp[i] = storeGlobal[i].indexOf(getMaxOfArray(storeGlobal[i]));
   }

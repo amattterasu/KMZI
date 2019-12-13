@@ -1,7 +1,7 @@
-import math  # используется для математических формул
-import random  # используется для генерации случайных чисел
+import math
+import random 
 
-# Тест Ферма - является ли число простым числом
+# Тест Ферма
 def fermatPrimalityTest(n):
 		if n > 1:
 				for t in range(50):
@@ -11,6 +11,7 @@ def fermatPrimalityTest(n):
 				return True
 		else:
 				return False
+
 
 # Функция для генерации простых чисел: генерирует случайные целые числа и выполняет тест Ферма
 def genNum(bits):
@@ -68,13 +69,15 @@ def decrypt(message, d, n):
 
 		return dec
 
+
+# <!--  BEGIN IS HERE  --> #
 def main():
 	print("1 - Автогенерация ключей\n2 - Ввести ключи и шифровать\n3 - Ввести ключи и расшифровать\n")
 	access = input() #select mode
 
-	#авто
+	#авто генерация
 	if (int(access) == 1):
-		bits = 512  # бит ключа
+		bits = 1024  # бит ключа
 		msg = open("text.txt", "r")
 
 		encrypted = open("encrypt.txt", "w")
@@ -86,7 +89,7 @@ def main():
 		a = crypt(msg.read(), e, n)
 		print('\n\n\n', 'p = ', p,'\n', 'q = ', q, '\n', 'e = ', e, '\n')
 
-		for i in a: #запись в encrypt.txt
+		for i in a: # запись в encrypt.txt
 			encrypted.write(str(i))
 			encrypted.write(' ')
 		encrypted.close()
@@ -97,36 +100,86 @@ def main():
 		print('Открытый ключ: ', (e, p*q), '\n')  # открытый ключ
 		print('Закрытый ключ: ', d, '\n' )  # закрытый ключ
 		b = decrypt(c, d, n)
-		print('Расшифрованное сообщение ', b, '\n')
+		print('Расшифрованное сообщение ', ''.join(b), '\n')
+		print('Зашифрованное сообщение в файле encrypt.txt')
 
-		for j in b:  # записать расшифрованное сообщение в файл
+		for j in b:  # Записать расшифрованное сообщение в файл
 			unencrypted.write(str(j))
 		msg.close()
 		encrypted.close()
 		unencrypted.close()
-	#расшифровка
+
+	# Расшифровка
 	elif (int(access) == 3): 
 		unencrypted = open("decrypt.txt", "w")
 		encrypted = open("encrypt.txt", "r")
+		
+		print('Введите n: ')
+		n = int(input())
+		print('Введите d: ')
+		d = int(input())
 
-		#
-		p = 11613703314935367732839405034936419359795706368140868226624456385395406352155693364440255401095938299159635247681686613460084012024652896215053235844874079
-		q = 10045276985916541981614797502044550826501658923584175848409065881594899588498847727106694082260493709099344691498152164567957232757850531624247920942757551
-		n = p * q
-		d = 37844138872143323583416889888208688813046385894554966742848355709886242151859904883767722411705676386658466471358207635994929561045175823799152040851274530275014033734073380033821776726598993186471708678301311472295720314282175673845786328950127312023569551467439527457797993438832954619834640810980811732661
-		#
-
-		print('\n\n\n', 'p = ', p,'\n', 'q = ', q, '\n', '\n\nЗакрытый ключ: ', d, '\n' )
+		print('\n\n\n', 'n = ', n, '\n\n Закрытый ключ: ', d, '\n' )
 		c = encrypted.read().split()
 		b = decrypt(c, d, n)
-		print('Расшифрованное сообщение ', b, '\n')
-
 		for z in b:  # записать расшифрованное сообщение в файл
 			unencrypted.write(z)
+		print('Расшифрованное сообщение ', ''.join(b), '\n')
 		
 		encrypted.close()
 		unencrypted.close()
-		
+
+	# Шифрование
+	elif (int(access) == 2):
+		bits = 1024  # бит ключа
+		msg = open("text.txt", "r")
+
+		encrypted = open("encrypt.txt", "w")
+
+		ac = 1
+		while (ac):
+			print('Введите p: ')
+			p = int(input())
+			if (fermatPrimalityTest(p)):
+				ac = 0
+			else:
+				print('\np не простое!\n')
+				ac = 1
+
+		ac = 1
+		while (ac):
+			print('Введите q: ')
+			q = int(input())
+			if (fermatPrimalityTest(q)):
+				ac = 0
+			else:
+				print('\nq не простое!\n')
+				ac = 1
+
+		n = p * q
+
+		print('Введите e: ')
+		e = int(input())
+
+		d, n = closeKey(e, p, q)  # генерация закрытого ключа
+		a = crypt(msg.read(), e, n)
+		print('\n\n\n', 'p = ', p,'\n', 'q = ', q, '\n', 'e = ', e, '\n')
+
+		for i in a: # запись в encrypt.txt
+			encrypted.write(str(i))
+			encrypted.write(' ')
+		encrypted.close()
+		encrypted = open("encrypt.txt", "r")
+
+		c = encrypted.read().split()
+
+		print('Открытый ключ: ', (e, p * q), '\n')  # открытый ключ
+		print('Закрытый ключ: ', d, '\n' )  # закрытый ключ
+		b = decrypt(c, d, n)
+
+		print('Зашифрованное сообщение в файле encrypt.txt')
+		msg.close()
+		encrypted.close()
 	else: 
 		print('Введите 1, 2 или 3, выбрав этим самым соответсвующий мод программы!')
 		
