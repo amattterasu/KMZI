@@ -119,7 +119,6 @@ def main():
 		print('Введите d: ')
 		d = int(input())
 
-		print('\n\n\n', 'n = ', n, '\n\n Закрытый ключ: ', d, '\n' )
 		c = encrypted.read().split()
 		b = decrypt(c, d, n)
 		for z in b:  # записать расшифрованное сообщение в файл
@@ -138,7 +137,7 @@ def main():
 
 		ac = 1
 		while (ac):
-			print('Введите p: ')
+			print('			Введите p: ')
 			p = int(input())
 			if (fermatPrimalityTest(p)):
 				ac = 0
@@ -148,7 +147,7 @@ def main():
 
 		ac = 1
 		while (ac):
-			print('Введите q: ')
+			print('			Введите q: ')
 			q = int(input())
 			if (fermatPrimalityTest(q)):
 				ac = 0
@@ -158,7 +157,7 @@ def main():
 
 		n = p * q
 
-		print('Введите e: ')
+		print('			Введите e: ')
 		e = int(input())
 
 		d, n = closeKey(e, p, q)  # генерация закрытого ключа
